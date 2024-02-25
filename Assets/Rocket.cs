@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -6,9 +7,18 @@ public class Rocket : MonoBehaviour
     AudioSource audioSource;
 
     [SerializeField]
-    float rcsThrust = 200f;
+    float rcsThrust = 68f;
     [SerializeField]
     float mainThrust = 4.5f;
+
+    enum State
+    {
+        Alive,
+        Dying,
+        Transcending
+    }
+
+    State state = State.Alive;
 
     // Start is called before the first frame update
     void Start()
@@ -20,23 +30,33 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        // todo: stop sound on death
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive)
+        {
+            return;
+        }
+
         switch(collision.gameObject.tag)
         {
             case "Friendly":
-                print("OK");
                 break;
-            case "Fuel":
-                print("Fuel");
+            case "Finish":
+                state = State.Transcending;
+                Invoke(nameof(LoadNextScene), 1f);
                 break;
             default:
-                print("Dead");
-                // kill player
+                state = State.Dying;
+                audioSource.Stop();
+                Invoke(nameof(LoadFirstScene), 1f);
                 break;
         }
     }
@@ -71,5 +91,14 @@ public class Rocket : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
         rigidBody.freezeRotation = false;
+    }
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void LoadFirstScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }
