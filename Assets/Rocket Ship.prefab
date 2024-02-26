@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 7350273262940264296}
   - component: {fileID: 7766413179077495138}
   - component: {fileID: 1885131448997479331}
+  - component: {fileID: 3671375802789712808}
   m_Layer: 0
   m_Name: Rocket Ship
   m_TagString: Untagged
@@ -530,6 +531,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!114 &3671375802789712808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897791985999879163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d35f7795a309e342a54f4089d971cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rcsThrust: 65
+  mainThrust: 4.5
+  mainEngine: {fileID: 8300000, guid: 465a666b5300a7e4bae2d318607927a6, type: 3}
+  deathSound: {fileID: 8300000, guid: 8980460eac8ba4d4a894c959286abc45, type: 3}
+  levelStartSound: {fileID: 8300000, guid: 040f8f2e2e068c84dbf7c19c5701403e, type: 3}
 --- !u!1001 &4702732721371773540
 PrefabInstance:
   m_ObjectHideFlags: 0
