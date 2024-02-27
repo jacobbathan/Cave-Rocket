@@ -24,7 +24,7 @@ public class Rocket : MonoBehaviour
     ParticleSystem successParticles;
     [SerializeField]
     ParticleSystem deathParticles;
-    [SerializeField]
+
     bool noCollisionMode = false;
 
     enum State
@@ -48,7 +48,10 @@ public class Rocket : MonoBehaviour
         {
             ResponseToThrustInput();
             ResponseToRotateInput();
-            ResponseToDebugKeys();
+            if (Debug.isDebugBuild)
+            {
+                ResponseToDebugKeys();
+            }
         }
     }
 
@@ -67,7 +70,7 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive)
+        if (state != State.Alive || noCollisionMode)
         {
             return;
         }
@@ -95,14 +98,11 @@ public class Rocket : MonoBehaviour
     }
     private void StartDeathSequence()
     { 
-        if (!noCollisionMode)
-        {
-            state = State.Dying;
-            audioSource.Stop();
-            deathParticles.Play();
-            audioSource.PlayOneShot(deathSound);
-            Invoke(nameof(LoadFirstScene), levelLoadDelay);
-        }
+        state = State.Dying;
+        audioSource.Stop();
+        deathParticles.Play();
+        audioSource.PlayOneShot(deathSound);
+        Invoke(nameof(LoadFirstScene), levelLoadDelay);
     }
     private void ResponseToThrustInput()
     {
@@ -145,7 +145,20 @@ public class Rocket : MonoBehaviour
     }
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        int nextSceneIndex;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings)
+        {
+
+            nextSceneIndex = 0; // go back to first level after the last level in the build settings
+        }
+        else
+        {
+            nextSceneIndex = currentSceneIndex + 1;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void LoadFirstScene()
