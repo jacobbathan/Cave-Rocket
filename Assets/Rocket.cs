@@ -66,6 +66,11 @@ public class Rocket : MonoBehaviour
             noCollisionMode = !noCollisionMode;
             print("DEBUG MODE: " + noCollisionMode);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
