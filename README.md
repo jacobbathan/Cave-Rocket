@@ -12,5 +12,5 @@ Demo avaliable [at this link.](https://simmer.io/@jacobbathan/caverocket)
 | D   | Rotate Right        |
 | Space   | Throttle        |
 
-Success chime made in FamiStudio
-Background track made in Garageband
+Success chime made in FamiStudio. 
+Background track made in Garageband. 
