@@ -436,7 +436,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 0.8
   Loop: 0
   Mute: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   mainThrust: 40
   mainEngine: {fileID: 8300000, guid: 465a666b5300a7e4bae2d318607927a6, type: 3}
   deathSound: {fileID: 8300000, guid: 8980460eac8ba4d4a894c959286abc45, type: 3}
-  levelStartSound: {fileID: 8300000, guid: 040f8f2e2e068c84dbf7c19c5701403e, type: 3}
+  levelStartSound: {fileID: 8300000, guid: cd4df21cf84665a498cdf1bcfcba61bf, type: 3}
   mainEngineParticles: {fileID: 6250126405572618133}
   successParticles: {fileID: 4960356694523984434}
   deathParticles: {fileID: 5336089852526437482}
