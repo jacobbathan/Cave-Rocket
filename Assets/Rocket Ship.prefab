@@ -549,8 +549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoadDelay: 2
-  rcsThrust: 100
-  mainThrust: 4.5
+  rcsThrust: 70
+  mainThrust: 40
   mainEngine: {fileID: 8300000, guid: 465a666b5300a7e4bae2d318607927a6, type: 3}
   deathSound: {fileID: 8300000, guid: 8980460eac8ba4d4a894c959286abc45, type: 3}
   levelStartSound: {fileID: 8300000, guid: 040f8f2e2e068c84dbf7c19c5701403e, type: 3}
